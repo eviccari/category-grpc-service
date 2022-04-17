@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "./proto";
+
+service CategoryService {
+    rpc CreateCategory(NewCategoryRequest) returns (CompleteCategoryResponse);
+    rpc FindByID (FindByIDRequest) returns (CompleteCategoryResponse);
+}
+
+message NewCategoryRequest {
+    string name = 1;
+}
+
+message CompleteCategoryResponse {
+    string ID = 1;
+    string name = 2;
+    string createdAt = 3;
+    string updatedAt = 4;
+}
+
+message FindByIDRequest {
+    string ID = 1;
+}
